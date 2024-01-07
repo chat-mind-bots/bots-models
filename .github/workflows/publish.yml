@@ -13,8 +13,14 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@octocat'
+          scope: '@chat-mind-bots'
       - run: yarn
-      - run: yarn npm publish // for Yarn version 1, use `yarn publish` instead
+      - name: Set version from release tag
+        run: |
+          RELEASE_VERSION=${GITHUB_REF/refs\/tags\//}
+          echo "Release version: $RELEASE_VERSION"
+          yarn version --new-version $RELEASE_VERSION --no-git-tag-version
+
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
