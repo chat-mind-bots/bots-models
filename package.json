@@ -1,9 +1,8 @@
 {
-  "name": "bots-models",
-  "version": "0.0.1",
+  "name": "@chat-mind-bots/bots-models",
+  "version": "0.0.2",
   "description": "",
   "author": "",
-  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
@@ -58,5 +57,11 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "url": "https://github.com/chat-mind-bots/bots-models"
   }
 }
