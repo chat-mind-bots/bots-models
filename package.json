@@ -62,6 +62,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "repository": {
+    "type": "git",
     "url": "https://github.com/chat-mind-bots/bots-models"
   }
 }
