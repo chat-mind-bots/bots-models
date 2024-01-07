@@ -2,6 +2,8 @@ name: Publish Package to npmjs
 on:
   release:
     types: [published]
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +16,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@chat-mind-bots'
-      - run: yarn
+      - run: yarn install
+      - name: Set deployment token
+        run: yarn config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
       - run: yarn npm publish // for Yarn version 1, use `yarn publish` instead
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
