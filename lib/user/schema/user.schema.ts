@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, now, Schema as MongooseSchema } from 'mongoose';
 import tt from 'typegram';
+import { CreateUserDto } from 'lib/user/dto';
 @Schema()
-export class User {
+export class User implements CreateUserDto {
   @Prop({ type: MongooseSchema.Types.Mixed, required: false })
   telegram?: tt.User;
 
