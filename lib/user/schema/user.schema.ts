@@ -6,6 +6,9 @@ export class User {
   @Prop({ type: MongooseSchema.Types.Mixed, required: false })
   telegram?: tt.User;
 
+  @Prop({ type: [String], required: true, default: [] })
+  bots: string[];
+
   @Prop({ type: Date, default: now() })
   createdAt: Date;
 
